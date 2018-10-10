@@ -31,6 +31,22 @@
             $response = $bot2->replyMessageNew($bot2->replyToken,$bot2->source->userId." & ".$usNAME);
         }  
     }
+
+     /////////////////////////////////////////////////////////////////*** UPDATE User Name TO DATABASE ***///////////////////////////////////////////////////////////
+
+     if($bot2->message->text == "update"){
+
+        $response = $bot2->getProfile($bot2->source->userId);
+
+        if ($response->isSucceeded()) {
+            $profile = $response->getJSONDecodedBody();
+            $usNAME = $profile['displayName'];
+            updateUser($bot2->source->userId,$usNAME);
+
+            $response = $bot2->replyMessageNew("UPDATED !");
+        }  
+    }
+
     /////////////////////////////////////////////////////////////////*** Carousal Template ***/////////////////////////////////////////////////////////////////////////
 
     if($bot2->message->text == "cas"){
