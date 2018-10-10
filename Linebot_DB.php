@@ -34,7 +34,11 @@
         return $userID;
     }
 
-
+    function updateUser($userID,$name){
+        $link=connectDB();
+        $query = "UPDATE TBUser SET name='$name' WHERE userID='$userID'";
+        mysqli_query($link,$query) or die ( "INSERT error: ".mysql_error() );
+    }
 
 
 ?>
