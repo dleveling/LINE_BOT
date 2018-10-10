@@ -4,9 +4,9 @@
 
     function connectDB(){
         $host = "localhost";
-        $user = "id1258199_linedb";
-        $pass = "2809900040740";
-        $db = "id1258199_linedb";
+        $user = "";
+        $pass = "";
+        $db = "";
         $link = mysqli_connect( $host, $user, $pass, $db);
         if ( ! $link ) {
             die( "Couldn't connect to MySQL: ".mysql_error() );

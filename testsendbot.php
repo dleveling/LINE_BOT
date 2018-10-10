@@ -2,9 +2,8 @@
 
     include_once('line-bot-api-master/php/line-bot.php');
     
-    $accessToken = "vF8xGUCn6fAi9hSd9aeTKNMKk55jZUydm0eUul+qi9D4EdpuEtO5cIdIEyEU1mTfKV1Bi1cKOCo+Mj56+jzM8phjzopKKGuKvd+33oXaSYI6UgGH6fGSkYzx4CpnTlWd06TjQzVYsWbQU1cvixnMNgdB04t89/1O/w1cDnyilFU=
-Issue";//copy Channel access token ตอนที่ตั้งค่ามาใส่
-    $channelSecret = '02507cc2576972f641459e2e782cd4f4';
+    $accessToken = "";//copy Channel access token ตอนที่ตั้งค่ามาใส่
+    $channelSecret = '';
     
     $bot = new BOT_API($channelSecret, $accessToken);
     
@@ -19,7 +18,7 @@ Issue";//copy Channel access token ตอนที่ตั้งค่ามา
     $type_message = $arrayJson['events'][0]['message']['type'];
 
      
-    $messageUID = "U0124561918e4f1add9a520ee5d2129af";
+    $messageUID = "";
 
 
     $arrayPostData['to'] = $messageUID;
