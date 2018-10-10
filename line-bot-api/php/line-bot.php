@@ -25,6 +25,7 @@ class BOT_API extends LINEBot {
     public $isText          = false;
     public $isImage         = false;
     public $isSticker       = false;
+    public $isLocation      = false;
 	
     public $text            = null;
     public $replyToken      = null;
@@ -70,6 +71,9 @@ class BOT_API extends LINEBot {
 				
                 if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {
                     $this->isSticker = true;
+                }
+                if ($event['type'] == 'message' && $event['message']['type'] == 'location') {
+                    $this->isLocation = true;
                 }
 				
             }

@@ -64,6 +64,8 @@
 
         $bot2->replyMessage($bot2->replyToken,$imgbuld);
 
+
+
         
         //$bot2->replyMessageNew($bot2->replyToken,$profile['displayName']);
         //$bot2->replyMessageNew($bot2->replyToken,$profile['pictureUrl']);
