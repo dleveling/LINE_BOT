@@ -4,9 +4,9 @@
     require_once('Linebot_DB.php');
     require_once('line-bot-api/php/line-bot.php');
 
-    $accessToken = "";
-    $channelSecret = "";
-    $userId = "";
+    $accessToken = "vF8xGUCn6fAi9hSd9aeTKNMKk55jZUydm0eUul+qi9D4EdpuEtO5cIdIEyEU1mTfKV1Bi1cKOCo+Mj56+jzM8phjzopKKGuKvd+33oXaSYI6UgGH6fGSkYzx4CpnTlWd06TjQzVYsWbQU1cvixnMNgdB04t89/1O/w1cDnyilFU=";
+    $channelSecret = "02507cc2576972f641459e2e782cd4f4";
+    $userId = "U0124561918e4f1add9a520ee5d2129af";
 
     $bot2 = new BOT_API($channelSecret,$accessToken);
 
@@ -201,6 +201,46 @@
 	    }
 
 	}
+
+    /////////////////////////////////////////////////////////////////////  QUICK REPLY ///////////////////////////////////////////////////////////
+
+    if($bot2->message->text == "qr"){
+
+        
+        $action1 = new \LINE\LINEBot\TemplateActionBuilder\CameraRollTemplateActionBuilder("CameraRoll");
+        $action2 = new \LINE\LINEBot\TemplateActionBuilder\CameraTemplateActionBuilder("Camera");
+        $action3 = new \LINE\LINEBot\TemplateActionBuilder\LocationTemplateActionBuilder("Location");
+        $action4 = new \LINE\LINEBot\TemplateActionBuilder\DatetimePickerTemplateActionBuilder("Select date","storeId=12345","datetime");
+        $action5 = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("Hola","Hola EiEi");
+
+
+        $QkBTN[] = new \LINE\LINEBot\QuickReplyBuilder\ButtonBuilder\QuickReplyButtonBuilder($action1);
+        $QkBTN[] = new \LINE\LINEBot\QuickReplyBuilder\ButtonBuilder\QuickReplyButtonBuilder($action2);
+        $QkBTN[] = new \LINE\LINEBot\QuickReplyBuilder\ButtonBuilder\QuickReplyButtonBuilder($action3);
+        $QkBTN[] = new \LINE\LINEBot\QuickReplyBuilder\ButtonBuilder\QuickReplyButtonBuilder($action4);
+        $QkBTN[] = new \LINE\LINEBot\QuickReplyBuilder\ButtonBuilder\QuickReplyButtonBuilder($action5);
+
+        $qkreply = new \LINE\LINEBot\QuickReplyBuilder\QuickReplyMessageBuilder($QkBTN);
+
+        /////  BUTTON TEMPLATE   
+
+        $action[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("Hello","mylink");
+        $action[] = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("Hola","mylink");
+        $link_ing =  "https://grean.000webhostapp.com/IMG_DL_LINE_BOT/ironfist.jpg";
+        $action_template = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("Mylink","Hello Mylink",$link_ing,$action);
+
+        /////
+
+            $templt = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("Alttexttt",$action_template,$qkreply);
+       // $alltmplate[] =  $action_template;
+
+
+
+        //$templt3 = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("Alttexttt",$action_template,$qkreply);//,$qkreply);
+
+        $bot2->pushMessage($userId,$templt);
+
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
